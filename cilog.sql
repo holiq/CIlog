@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categories` (
+  `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -39,9 +40,10 @@ CREATE TABLE `categories` (
 --
 
 CREATE TABLE `comments` (
+  `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `content` text NOT NULL,
   `post_id` int(11) NOT NULL,
-  `comment_id` int(11) NOT NULL,
+  `comment_id` int(11) NULL,
   `type` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -53,6 +55,7 @@ CREATE TABLE `comments` (
 --
 
 CREATE TABLE `posts` (
+  `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `category_id` int(11) NOT NULL,
@@ -68,11 +71,12 @@ CREATE TABLE `posts` (
 --
 
 CREATE TABLE `users` (
+  `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;
 
