@@ -38,8 +38,9 @@ class Login extends BaseController
             if (password_verify($data['password'], $check['password'])) {
                 session()->set('name', $check['name']);
                 session()->set('username', $check['username']);
+                session()->set('role', $check['role']);
 
-                return redirect()->route('Dashboard::index')->with('message', 'Selamat datang ' . $data['username']);
+                return redirect()->route('Admin\Dashboard::index')->with('message', 'Selamat datang ' . $data['username']);
             }
         }
 
@@ -50,6 +51,6 @@ class Login extends BaseController
     {
         session()->destroy();
 
-        return redirect()->route('Login::index');
+        return redirect()->route('Home::index');
     }
 }
