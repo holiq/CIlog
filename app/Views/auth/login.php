@@ -98,7 +98,7 @@
 
                     <h4 class="mb-4">Login Admin</h4>
 
-                    <form method="post" action="<?= route_to('Auth/Login::process') ?>" class="mb-3">
+                    <form method="post" action="<?= route_to('Auth\Login::process') ?>" class="mb-3">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" placeholder="Masukan username" autofocus="">

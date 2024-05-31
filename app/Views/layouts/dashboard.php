@@ -157,7 +157,7 @@
         <div class="layout-container">
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" data-bg-class="bg-menu-theme">
                 <div class="app-brand demo mb-4">
-                    <a href="<?= route_to('Admin/Dashboard::index') ?>" class="app-brand-link">
+                    <a href="<?= route_to('Admin\Dashboard::index') ?>" class="app-brand-link">
                         <span class="app-brand-text demo menu-text fw-bold ms-2">Cilog</span>
                     </a>
 
@@ -170,16 +170,16 @@
 
                 <ul class="menu-inner py-1 ps ps--active-y">
                     <li class="menu-item">
-                        <a href="<?= route_to('Admin/Dashboard::index') ?>" class="menu-link">
+                        <a href="<?= route_to('Admin\Dashboard::index') ?>" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home"></i>
                             <div data-i18n="Basic">Dashboard</div>
                         </a>
                     </li>
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Admin Menu</span></li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-collection"></i>
-                            <div data-i18n="Basic">Cards</div>
+                        <a href="<?= route_to('Admin\Category::index') ?>" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-box"></i>
+                            <div data-i18n="Basic">Kategori</div>
                         </a>
                     </li>
                 </ul>
@@ -217,7 +217,7 @@
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= route_to('Auth/Login::destroy') ?>">
+                                    <a class="dropdown-item" href="<?= route_to('Auth\Login::destroy') ?>">
                                         <i class="bx bx-power-off me-2"></i>
                                         <span class="align-middle">Log Out</span>
                                     </a>
