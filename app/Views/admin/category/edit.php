@@ -1,4 +1,4 @@
-<?= $this->extend('layout') ?>
+<?= $this->extend('layouts/dashboard') ?>
 
 <?= $this->section('content') ?>
 <div class="page-heading">

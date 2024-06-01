@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <div class="page-heading">
     <div class="page-title-headings mb-4">
-        <h3>List Category</h3>
+        <h3>List User</h3>
     </div>
 
     <?php if (! empty(session()->getFlashdata('message'))) : ?>
@@ -13,7 +13,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     <?php endif ?>
 
-    <a href="<?= route_to('Category::create') ?>" class="btn btn-success mb-3">Tambah Data</a>
+    <a href="<?= route_to('User::create') ?>" class="btn btn-success mb-3">Tambah Data</a>
 
     <div class="card">
         <div class="table-responsive">
@@ -21,20 +21,26 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Role</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php $no = 1; ?>
-                    <?php foreach ($data as $category) : ?>
+                    <?php foreach ($data as $user) : ?>
                         <tr>
                             <td><?= $no++ ?></td>
-                            <td><?= $category['name'] ?></td>
+                            <td><?= $user['name'] ?></td>
+                            <td><?= $user['email'] ?></td>
+                            <td><?= $user['username'] ?></td>
+                            <td><?= $user['role'] ?></td>
                             <td class="text-center">
-                                <a href="<?= route_to('Category::edit', $category['id']); ?>" class="btn-link">Edit</a>
-                                <a href="<?= route_to('Category::destroy', $category['id']); ?>" class="btn-link text-danger" onclick="destroy(event)">Delete</a>
+                                <a href="<?= route_to('User::edit', $user['id']); ?>" class="btn-link">Edit</a>
+                                <a href="<?= route_to('User::destroy', $user['id']); ?>" class="btn-link text-danger" onclick="destroy(event)">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach ?>
@@ -42,7 +48,7 @@
             </table>
         </div>
 
-        <?= $pager->links('category', 'pagination') ?>
+        <?= $pager->links('user', 'pagination') ?>
     </div>
 </div>
 <?= $this->endSection() ?>
