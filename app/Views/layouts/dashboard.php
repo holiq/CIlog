@@ -176,11 +176,34 @@
                                 <div data-i18n="Basic">Dashboard</div>
                             </a>
                         </li>
-                        <li class="menu-header small text-uppercase"><span class="menu-header-text">Admin Menu</span></li>
+
+                        <?php if (session()->get('role') == 'admin') : ?>
+                            <li class="menu-header small text-uppercase"><span class="menu-header-text">Admin Menu</span></li>
+                            <li class="menu-item">
+                                <a href="<?= route_to('Admin\Category::index') ?>" class="menu-link">
+                                    <i class="menu-icon tf-icons bx bx-box"></i>
+                                    <div data-i18n="Basic">Kategori</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="<?= route_to('Admin\Comment::index') ?>" class="menu-link">
+                                    <i class="menu-icon tf-icons bx bx-chat"></i>
+                                    <div data-i18n="Basic">Kometar</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="<?= route_to('Admin\User::index') ?>" class="menu-link">
+                                    <i class="menu-icon tf-icons bx bx-user"></i>
+                                    <div data-i18n="Basic">User</div>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+
+                        <li class="menu-header small text-uppercase"><span class="menu-header-text">Editor Menu</span></li>
                         <li class="menu-item">
-                            <a href="<?= route_to('Admin\Category::index') ?>" class="menu-link">
-                                <i class="menu-icon tf-icons bx bx-box"></i>
-                                <div data-i18n="Basic">Kategori</div>
+                            <a href="<?= route_to('Admin\User::index') ?>" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-note"></i>
+                                <div data-i18n="Basic">Post</div>
                             </a>
                         </li>
                     </ul>
