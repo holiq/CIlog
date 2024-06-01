@@ -3,23 +3,20 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\User as ModelsUser;
+use App\Models\Category as ModelsCategory;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class User extends BaseController
+class Category extends BaseController
 {
-    protected $user;
+    protected $category;
     protected $rules;
 
     public function __construct()
     {
-        $this->user  = new ModelsUser();
+        $this->category  = new ModelsCategory();
         $this->rules = [
-            'username' => 'required',
-            'password' => 'required',
             'name' => 'required',
-            'email' => 'required',
-            'role' => 'required',
+            'slug' => 'required',
 
         ];
     }
