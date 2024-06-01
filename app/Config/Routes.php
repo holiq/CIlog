@@ -34,3 +34,11 @@ $routes->post('/admin/comment/store', 'Admin\Comment::store');
 $routes->get('/admin/comment/edit/(:num)', 'Admin\Comment::edit/$1');
 $routes->post('/admin/comment/update/(:num)', 'Admin\Comment::update/$1');
 $routes->get('/admin/comment/delete/(:num)', 'Admin\Comment::destroy/$1');
+
+$routes->get('/admin/category', 'Admin\Category::index');
+$routes->get('/admin/category/create', 'Admin\Category::create');
+$routes->post('/admin/category/store', 'Admin\Category::store');
+$routes->get('/admin/category/edit/(:num)', 'Admin\Category::edit/$1');
+$routes->post('/admin/category/update/(:num)', 'Admin\Category::update/$1');
+$routes->get('/admin/category/delete/(:num)', 'Admin\Category::destroy/$1');
+
