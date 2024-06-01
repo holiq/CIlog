@@ -6,6 +6,13 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
+$routes->get('/admin/login', 'Auth\Login::index');
+$routes->post('/admin/login', 'Auth\Login::process');
+$routes->get('/admin/logout', 'Auth\Login::destroy');
+
+$routes->get('/admin', 'Admin\Dashboard::index');
+
+
 $routes->get('/admin/post', 'Admin\Post::index');
 $routes->get('/admin/post/create', 'Admin\Post::create');
 $routes->post('/admin/post/store', 'Admin\Post::store');
