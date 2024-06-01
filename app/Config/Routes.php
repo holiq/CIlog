@@ -27,3 +27,10 @@ $routes->post('/admin/user/store', 'Admin\User::store');
 $routes->get('/admin/user/edit/(:num)', 'Admin\User::edit/$1');
 $routes->post('/admin/user/update/(:num)', 'Admin\User::update/$1');
 $routes->get('/admin/user/delete/(:num)', 'Admin\User::destroy/$1');
+
+$routes->get('/admin/comment', 'Admin\Comment::index');
+$routes->get('/admin/comment/create', 'Admin\Comment::create');
+$routes->post('/admin/comment/store', 'Admin\Comment::store');
+$routes->get('/admin/comment/edit/(:num)', 'Admin\Comment::edit/$1');
+$routes->post('/admin/comment/update/(:num)', 'Admin\Comment::update/$1');
+$routes->get('/admin/comment/delete/(:num)', 'Admin\Comment::destroy/$1');
