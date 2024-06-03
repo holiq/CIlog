@@ -177,7 +177,7 @@
                             </a>
                         </li>
 
-                        <?php if (session()->get('role') == 'admin') : ?>
+                        <?php if (session()->get('role') == 'Admin') : ?>
                             <li class="menu-header small text-uppercase"><span class="menu-header-text">Admin Menu</span></li>
                             <li class="menu-item">
                                 <a href="<?= route_to('Admin\Category::index') ?>" class="menu-link">

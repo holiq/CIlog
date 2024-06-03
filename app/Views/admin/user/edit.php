@@ -1,12 +1,9 @@
 <?= $this->extend('layouts/dashboard') ?>
 
 <?= $this->section('content') ?>
-<div class="page-heading">
-    <div class="page-title-headings mb-4">
-        <h3>Edit Category</h3>
-    </div>
+<div class="container mt-4">
 
-    <?php if (! empty(session()->getFlashdata('message'))) : ?>
+    <?php if (!empty(session()->getFlashdata('message'))) : ?>
         <div class="alert alert-danger alert-dismissible show fade">
             <ul class="mb-0">
                 <?php foreach (session()->getFlashdata('message') as $error) : ?>
@@ -17,32 +14,35 @@
         </div>
     <?php endif ?>
 
-    <a href="<?= route_to('User::index') ?>" class="btn btn-md btn-warning mb-3">Kembali</a>
+    <a href="<?= route_to('Admin\User::index') ?>" class="btn btn-md btn-warning mb-3">Kembali</a>
 
     <div class="card">
         <div class="card-body">
-            <form method="post" action="<?= route_to('User::update', $user['id']) ?>">
-                <input type="hidden" name="_method" value="put">
+            <form method="post" action="<?= route_to('Admin\User::update', $user->id) ?>">
 
                 <div class="mb-4">
                     <label for"name">Nama</label>
-                    <input type="text" name="name" id="name" class="form-control" value="<?= $User['name'] ?>">
+                    <input type="text" name="name" id="name" class="form-control" value="<?= $user->name ?>">
                 </div>
                 <div class="mb-4">
                     <label for"email">Email</label>
-                    <input type="text" name="email" id="email" class="form-control" value="<?= $user['email'] ?>">
+                    <input type="text" name="email" id="email" class="form-control" value="<?= $user->email ?>">
                 </div>
                 <div class="mb-4">
                     <label for"username">Username</label>
-                    <input type="text" name="username" id="username" class="form-control" value="<?= $user['username'] ?>>
+                    <input type="text" name="username" id="username" class="form-control" value="<?= $user->username ?>">
                 </div>
-                <div class="mb-4">
+                <div class=" mb-4">
                     <label for"role">Role</label>
-                    <input type="text" name="role" id="role" class="form-control" value="<?= $user['role'] ?>">
+                    <select name="role" id="role" class="form-control">
+                        <option value="">--Pilih--</option>
+                        <option value="Admin" <?= $user->role == 'Admin' ? 'selected' : '' ?>>Admin</option>
+                        <option value="Editor" <?= $user->role == 'Editor' ? 'selected' : '' ?>>Editor</option>
+                    </select>
                 </div>
                 <div class="mb-4">
                     <label for"password">Password</label>
-                    <input type="text" name="password" id="password" class="form-control" value="<?= $user['password'] ?>">
+                    <input type="text" name="password" id="password" class="form-control">
                 </div>
 
 

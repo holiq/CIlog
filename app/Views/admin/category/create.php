@@ -1,12 +1,9 @@
 <?= $this->extend('layouts/dashboard') ?>
 
 <?= $this->section('content') ?>
-<div class="page-heading">
-    <div class="page-title-headings mb-4">
-        <h3>Tambah category</h3>
-    </div>
+<div class="container mt-4">
 
-    <?php if (! empty(session()->getFlashdata('message'))) : ?>
+    <?php if (!empty(session()->getFlashdata('message'))) : ?>
         <div class="alert alert-danger alert-dismissible show fade">
             <ul class="mb-0">
                 <?php foreach (session()->getFlashdata('message') as $error) : ?>
@@ -17,11 +14,11 @@
         </div>
     <?php endif ?>
 
-    <a href="<?= route_to('Category::index') ?>" class="btn btn-md btn-warning mb-3">Kembali</a>
+    <a href="<?= route_to('Admin\Category::index') ?>" class="btn btn-md btn-warning mb-3">Kembali</a>
 
     <div class="card">
         <div class="card-body">
-            <form method="post" action="<?= route_to('Category::store') ?>">
+            <form method="post" action="<?= route_to('Admin\Category::store') ?>">
                 <div class="mb-4">
                     <label for"name">Nama Category</label>
                     <input type="text" name="name" id="name" class="form-control">
