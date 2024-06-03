@@ -35,7 +35,7 @@
                             <td><?= $no++ ?></td>
                             <td><?= $post->title ?></td>
                             <td><?= $post->slug ?></td>
-                            <td><?= $post->user_name ?></td>
+                            <td><?= $post->editor_name ?></td>
                             <td><?= $post->category_name ?></td>
                             <td><?= $post->view ?></td>
                             <td><?= $post->created_at ?></td>
