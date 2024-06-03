@@ -12,7 +12,7 @@ class Comment extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['content','post_id','comment_id','type','created_at'];
+    protected $allowedFields    = ['content', 'post_id', 'user_id', 'comment_id', 'type', 'created_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -43,4 +43,15 @@ class Comment extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function withPost()
+    {
+        return $this->join('posts', 'posts.id = comments.id')->select('comments.*, posts.title');
+    }
+
+    public function withEditor()
+    {
+        return $this->join('users', 'users.id = comments.user_id')
+            ->select('comments.*, users.name AS editor_name, users.email AS editor_email');
+    }
 }

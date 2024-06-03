@@ -16,9 +16,12 @@
     <link rel="stylesheet" href="/css/theme-default.css" />
     <link rel="stylesheet" href="/css/perfect-scrollbar.css" />
 
+    <link rel="stylesheet" href="/froala/css/froala_editor.pkgd.min.css" />
+    <link rel="stylesheet" href="/froala/css/froala_style.min.css" />
+    <script src="/froala/js/froala_editor.pkgd.min.js"></script>
+
     <script src="/js/helpers.js"></script>
     <script src="/js/config.js"></script>
-
 </head>
 
 <body>
@@ -186,6 +189,12 @@
                                 </a>
                             </li>
                             <li class="menu-item">
+                                <a href="<?= route_to('Admin\Post::index') ?>" class="menu-link">
+                                    <i class="menu-icon tf-icons bx bx-note"></i>
+                                    <div data-i18n="Basic">Post</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
                                 <a href="<?= route_to('Admin\Comment::index') ?>" class="menu-link">
                                     <i class="menu-icon tf-icons bx bx-chat"></i>
                                     <div data-i18n="Basic">Kometar</div>
@@ -201,9 +210,15 @@
 
                         <li class="menu-header small text-uppercase"><span class="menu-header-text">Editor Menu</span></li>
                         <li class="menu-item">
-                            <a href="<?= route_to('Admin\User::index') ?>" class="menu-link">
+                            <a href="<?= route_to('Admin\Post::my') ?>" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-note"></i>
-                                <div data-i18n="Basic">Post</div>
+                                <div data-i18n="Basic">Post Saya</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="<?= route_to('Admin\Comment::my') ?>" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-chat"></i>
+                                <div data-i18n="Basic">Komentar Post</div>
                             </a>
                         </li>
                     </ul>
@@ -267,6 +282,19 @@
 
     <script src="<?= base_url('js/core.js') ?>" crossorigin="anonymous"></script>
     <script src="<?= base_url('js/main.js') ?>" crossorigin="anonymous"></script>
+
+    <script>
+        let editor = new FroalaEditor('#editor', {
+            toolbarButtons: [
+                ["undo", "redo", ],
+                ["bold", "italic", "underline", "textColor", "backgroundColor", "clearFormatting"],
+                ["alignLeft", "alignCenter", "alignRight", "alignJustify"],
+                ["formatOL", "formatUL"],
+                ["paragraphFormat", "fontSize"],
+                ["insertLink", "insertImage"]
+            ]
+        });
+    </script>
 </body>
 
 </html>

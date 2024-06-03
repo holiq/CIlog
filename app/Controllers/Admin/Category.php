@@ -19,6 +19,7 @@ class Category extends BaseController
 
         ];
     }
+
     public function index()
     {
         $data = [

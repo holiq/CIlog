@@ -35,6 +35,7 @@ class Login extends BaseController
 
         if ($check) {
             if (password_verify($data['password'], $check->password)) {
+                session()->set('id', $check->id);
                 session()->set('name', $check->name);
                 session()->set('username', $check->username);
                 session()->set('role', $check->role);

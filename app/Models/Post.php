@@ -12,7 +12,7 @@ class Post extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['title','slug','category_id','content','view','created_at'];
+    protected $allowedFields    = ['title', 'slug', 'user_id', 'category_id', 'content', 'view', 'created_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -43,4 +43,14 @@ class Post extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function withCategory()
+    {
+        return $this->join('categories', 'categories.id = posts.category_id')->select('posts.*, categories.name AS category_name');
+    }
+
+    public function withUser()
+    {
+        return $this->join('users', 'users.id = posts.user_id')->select('posts.*, users.name AS user_name');
+    }
 }

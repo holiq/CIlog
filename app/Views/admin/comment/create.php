@@ -14,22 +14,29 @@
         </div>
     <?php endif ?>
 
-    <a href="<?= route_to('Admin\Category::index') ?>" class="btn btn-md btn-warning mb-3">Kembali</a>
+    <a href="<?= route_to('Admin\Comment::index') ?>" class="btn btn-md btn-warning mb-3">Kembali</a>
 
     <div class="card">
         <div class="card-body">
-            <form method="post" action="<?= route_to('Admin\Category::update', $category->id) ?>">
-
+            <form method="post" action="<?= route_to('Admin\Comment::store') ?>">
                 <div class="mb-4">
-                    <label for"name">Nama Category</label>
-                    <input type="text" name="name" id="name" class="form-control" value="<?= $category->name ?>">
+                    <label for"post_id">Judul Post</label>
+                    <select name="post_id" id="post_id" class="form-control">
+                        <option value="">--Pilih--</option>
+                        <?php foreach ($posts as $data) : ?>
+                            <option value="<?= $data->id ?>"><?= $data->title ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
 
+                <div class="mb-4">
+                    <label for"editor">Komentar</label>
+                    <textarea name="content" class="form-control" id="editor"></textarea>
+                </div>
 
                 <button type="submit" class="btn btn-success btn-block">Simpan</button>
             </form>
         </div>
     </div>
 </div>
-
 <?= $this->endSection() ?>
