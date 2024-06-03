@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Editor;
 
 use App\Controllers\BaseController;
 use App\Models\Comment as ModelsComment;
@@ -26,22 +26,22 @@ class Comment extends BaseController
     public function index()
     {
         $data = [
-            'data'  => $this->comment->withPost()->withEditor()->paginate('5', 'comment'),
+            'data'  => $this->comment->withPost()->withEditor()->onlyMyComment($this->post->onlyMyPost()->getIdPost())->paginate('5', 'comment'),
             'title' => 'List Komentar',
             'pager' => $this->comment->pager,
         ];
 
-        return view('admin/comment/index', $data);
+        return view('editor/comment/index', $data);
     }
 
     public function create()
     {
         $data = [
             'title' => 'Tambah Komentar',
-            'posts' => $this->post->select('id, title')->findAll(),
+            'posts' => $this->post->onlyMyPost()->select('id, title')->findAll(),
         ];
 
-        return view('admin/comment/create', $data);
+        return view('editor/comment/create', $data);
     }
 
     public function store()
@@ -57,18 +57,18 @@ class Comment extends BaseController
 
         $this->comment->save($data);
 
-        return redirect()->route('Admin\Comment::index')->with('message', 'Sukses tambah data');
+        return redirect()->route('Editor\Comment::index')->with('message', 'Sukses tambah data');
     }
 
     public function edit(int $id)
     {
         $data = [
             'title'    => 'Edit Komentar',
-            'comment' => $this->comment->find($id),
-            'posts' => $this->post->select('id, title')->findAll(),
+            'comment' => $this->comment->onlyMyComment($this->post->onlyMyPost()->getIdPost())->find($id),
+            'posts' => $this->post->onlyMyPost()->select('id, title')->findAll(),
         ];
 
-        return view('admin/comment/edit', $data);
+        return view('editor/comment/edit', $data);
     }
 
     public function update(int $id)
@@ -79,14 +79,14 @@ class Comment extends BaseController
             return redirect()->back()->with('message', $this->validator->getErrors());
         }
 
-        $this->comment->update($id, $data);
+        $this->comment->onlyMyComment($this->post->onlyMyPost()->getIdPost())->update($id, $data);
 
-        return redirect()->route('Admin\Comment::index')->with('message', 'Sukses ubah data');
+        return redirect()->route('Editor\Comment::index')->with('message', 'Sukses ubah data');
     }
 
     public function destroy(int $id)
     {
-        $this->comment->delete($id);
+        $this->comment->onlyMyComment($this->post->onlyMyPost()->getIdPost())->delete($id);
 
         return redirect()->back()->with('message', 'Sukses hapus data');
     }

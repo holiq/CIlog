@@ -46,12 +46,17 @@ class Comment extends Model
 
     public function withPost()
     {
-        return $this->join('posts', 'posts.id = comments.id')->select('comments.*, posts.title');
+        return $this->join('posts', 'posts.id = comments.post_id')->select('comments.*, posts.title');
     }
 
     public function withEditor()
     {
         return $this->join('users', 'users.id = comments.user_id')
             ->select('comments.*, users.name AS editor_name, users.email AS editor_email');
+    }
+
+    public function onlyMyComment($myPost)
+    {
+        return $this->whereIn('post_id', $myPost);
     }
 }

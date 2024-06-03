@@ -53,4 +53,14 @@ class Post extends Model
     {
         return $this->join('users', 'users.id = posts.user_id')->select('posts.*, users.name AS user_name');
     }
+
+    public function onlyMyPost()
+    {
+        return $this->where('posts.user_id', session()->get('id'));
+    }
+
+    public function getIdPost()
+    {
+        return $this->findColumn('id');
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Editor;
 
 use App\Controllers\BaseController;
 use App\Models\Category;
@@ -27,12 +27,12 @@ class Post extends BaseController
     public function index()
     {
         $data = [
-            'data'  => $this->post->withCategory()->withUser()->paginate('5', 'post'),
+            'data'  => $this->post->withCategory()->withUser()->onlyMyPost()->paginate('5', 'post'),
             'title' => 'List Post',
             'pager' => $this->post->pager,
         ];
 
-        return view('admin/post/index', $data);
+        return view('editor/post/index', $data);
     }
 
     public function create()
@@ -42,7 +42,7 @@ class Post extends BaseController
             'categories' => $this->category->findAll(),
         ];
 
-        return view('admin/post/create', $data);
+        return view('editor/post/create', $data);
     }
 
     public function store()
@@ -59,18 +59,18 @@ class Post extends BaseController
 
         $this->post->save($data);
 
-        return redirect()->route('Admin\Post::index')->with('message', 'Sukses tambah data');
+        return redirect()->route('Editor\Post::index')->with('message', 'Sukses tambah data');
     }
 
     public function edit(int $id)
     {
         $data = [
             'title' => 'Edit Post',
-            'post' => $this->post->find($id),
+            'post' => $this->post->onlyMyPost()->find($id),
             'categories' => $this->category->findAll(),
         ];
 
-        return view('admin/post/edit', $data);
+        return view('editor/post/edit', $data);
     }
 
     public function update(int $id)
@@ -83,14 +83,14 @@ class Post extends BaseController
 
         $data['slug'] = url_title(str: $data['title'], lowercase: true);
 
-        $this->post->update($id, $data);
+        $this->post->onlyMyPost()->update($id, $data);
 
-        return redirect()->route('Admin\Post::index')->with('message', 'Sukses ubah data');
+        return redirect()->route('Editor\Post::index')->with('message', 'Sukses ubah data');
     }
 
     public function destroy(int $id)
     {
-        $this->post->delete($id);
+        $this->post->onlyMyPost()->delete($id);
 
         return redirect()->back()->with('message', 'Sukses hapus data');
     }

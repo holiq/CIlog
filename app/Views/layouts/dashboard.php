@@ -210,15 +210,15 @@
 
                         <li class="menu-header small text-uppercase"><span class="menu-header-text">Editor Menu</span></li>
                         <li class="menu-item">
-                            <a href="<?= route_to('Admin\Post::my') ?>" class="menu-link">
+                            <a href="<?= route_to('Editor\Post::index') ?>" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-note"></i>
-                                <div data-i18n="Basic">Post Saya</div>
+                                <div data-i18n="Basic">Post</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="<?= route_to('Admin\Comment::my') ?>" class="menu-link">
+                            <a href="<?= route_to('Editor\Comment::index') ?>" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-chat"></i>
-                                <div data-i18n="Basic">Komentar Post</div>
+                                <div data-i18n="Basic">Komentar</div>
                             </a>
                         </li>
                     </ul>
