@@ -12,7 +12,7 @@ class Comment extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['content', 'post_id', 'user_id', 'comment_id', 'type', 'created_at'];
+    protected $allowedFields    = ['content', 'post_id', 'user_id', 'comment_id', 'name', 'email', 'type', 'created_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -51,12 +51,25 @@ class Comment extends Model
 
     public function withEditor()
     {
-        return $this->join('users', 'users.id = comments.user_id')
+        return $this->join('users', 'users.id = comments.user_id', 'left')
             ->select('comments.*, users.name AS editor_name, users.email AS editor_email');
     }
 
     public function onlyMyComment($myPost)
     {
         return $this->whereIn('post_id', $myPost);
+    }
+
+    public function getComments($postId, $parentId = null)
+    {
+        $comments = $this->withEditor()->where(['post_id' => $postId, 'comment_id' => $parentId])
+            ->orderBy('id', 'DESC')
+            ->findAll();
+
+        foreach ($comments as &$comment) {
+            $comment->replies = $this->getComments($postId, $comment->id);
+        }
+
+        return $comments;
     }
 }

@@ -53,3 +53,6 @@ $routes->post('/editor/comment/store', 'Editor\Comment::store');
 $routes->get('/editor/comment/edit/(:num)', 'Editor\Comment::edit/$1');
 $routes->post('/editor/comment/update/(:num)', 'Editor\Comment::update/$1');
 $routes->get('/editor/comment/delete/(:num)', 'Editor\Comment::destroy/$1');
+
+$routes->get('/(:segment)', 'Home::detail/$1');
+$routes->post('/(:segment)/comment', 'Home::comment/$1');

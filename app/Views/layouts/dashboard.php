@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/css/perfect-scrollbar.css" />
 
     <link rel="stylesheet" href="/froala/css/froala_editor.pkgd.min.css" />
-    <link rel="stylesheet" href="/froala/css/froala_style.min.css" />
     <script src="/froala/js/froala_editor.pkgd.min.js"></script>
 
     <script src="/js/helpers.js"></script>

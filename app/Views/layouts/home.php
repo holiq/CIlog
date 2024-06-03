@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="/css/core.css" />
     <link rel="stylesheet" href="/css/theme-default.css" />
 
+    <link rel="stylesheet" href="/froala/css/froala_editor.pkgd.min.css" />
+    <script src="/froala/js/froala_editor.pkgd.min.js"></script>
+
     <script src="/js/helpers.js"></script>
     <script src="/js/config.js"></script>
 
@@ -24,14 +27,14 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-white bg-white mb-5">
             <div class="container-fluid">
-                <a class="navbar-brand fs-4" href="javascript:void(0)">Cilog</a>
+                <a class="navbar-brand fs-4" href="<?= route_to('Home::index') ?>">Cilog</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="javascript:void(0)">Home</a>
+                            <a class="nav-link active" aria-current="page" href="<?= route_to('Home::index') ?>">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="javascript:void(0)">Kategori</a>
@@ -52,6 +55,18 @@
 
     <script src="<?= base_url('js/core.js') ?>" crossorigin="anonymous"></script>
     <script src="<?= base_url('js/main.js') ?>" crossorigin="anonymous"></script>
+
+    <script>
+        let editor = new FroalaEditor('#komentar', {
+            toolbarButtons: [
+                ["undo", "redo", ],
+                ["bold", "italic", "underline"],
+                ["alignLeft", "alignCenter", "alignRight", "alignJustify"],
+                ["formatOL", "formatUL"],
+                ["insertLink", "insertImage"]
+            ]
+        });
+    </script>
 </body>
 
 </html>
