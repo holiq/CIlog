@@ -2,26 +2,58 @@
 
 namespace App\Controllers;
 
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
 
 class Home extends BaseController
 {
+    protected $category;
     protected $comment;
     protected $post;
 
     public function __construct()
     {
+        $this->category = new Category();
         $this->comment = new Comment();
         $this->post = new Post();
     }
 
     public function index(): string
     {
+        $post = $this->post->withCategoryAndUserAndTotalComments();
+
+        $q = $this->request->getGet('q');
+
+        if ($q) {
+            $post->like('title', $q);
+        }
+
         $data = [
-            'data'  => $this->post->withCategoryAndUserAndTotalComments()->paginate('5', 'post'),
+            'data'  => $post->paginate('5', 'post'),
             'title' => 'Cilog',
             'pager' => $this->post->pager,
+            'categories' => $this->category->findAll(),
+        ];
+
+        return view('home', $data);
+    }
+
+    public function listByCategory(string $slug)
+    {
+        $post = $this->post->withCategoryAndUserAndTotalComments();
+
+        $q = $this->request->getGet('q');
+
+        if ($q) {
+            $post->like('title', $q);
+        }
+
+        $data = [
+            'data'  => $post->where('categories.slug', $slug)->paginate('5', 'post'),
+            'title' => 'Cilog',
+            'pager' => $this->post->pager,
+            'categories' => $this->category->findAll(),
         ];
 
         return view('home', $data);
@@ -43,6 +75,7 @@ class Home extends BaseController
             'title' => 'Cilog | ' . htmlspecialchars($post->title),
             'post' => $post,
             'comments' => $this->comment->getComments($post->id),
+            'categories' => $this->category->findAll(),
         ];
 
         return view('post', $data);

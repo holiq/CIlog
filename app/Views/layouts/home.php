@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/css/theme-default.css" />
 
     <link rel="stylesheet" href="/froala/css/froala_editor.pkgd.min.css" />
+    <link rel="stylesheet" href="/froala/css/froala_style.min.css" />
     <script src="/froala/js/froala_editor.pkgd.min.js"></script>
 
     <script src="/js/helpers.js"></script>
@@ -34,14 +35,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<?= route_to('Home::index') ?>">Home</a>
+                            <a class="nav-link" aria-current="page" href="<?= route_to('Home::index') ?>">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Kategori</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="kategoriDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Kategori
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="kategoriDropdown">
+                                <?php foreach ($categories as $category) : ?>
+                                    <li><a class="dropdown-item" href="<?= route_to('Home::listByCategory', $category->slug) ?>"><?= $category->name ?></a></li>
+                                <?php endforeach; ?>
+                            </ul>
                         </li>
                     </ul>
-                    <form class="d-flex" onsubmit="return false">
-                        <input class="form-control me-2" type="search" placeholder="Cari..." aria-label="Cari" />
+                    <form method="get" class="d-flex">
+                        <input class="form-control me-2" type="search" name="q" placeholder="Cari..." aria-label="Cari" />
                         <button class="btn btn-outline-primary" type="submit">Cari</button>
                     </form>
                 </div>

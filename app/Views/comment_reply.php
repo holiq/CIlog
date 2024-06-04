@@ -8,7 +8,7 @@ if (!empty($comments)) :
                 <h5 class="mb-0 me-1"><?= $comment->name ?? $comment->editor_name ?></h5>
                 <small class="text-muted">| <?= $comment->created_at ?> | #<?= $comment->id ?></small>
             </div>
-            <div>
+            <div class="fr-view">
                 <?= $comment->content ?>
             </div>
             <button type="button" class="btn btn-outline-primary btn-sm" onclick="reply(<?= $comment->id ?>)">Balas</button>
