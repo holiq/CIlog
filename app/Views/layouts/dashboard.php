@@ -291,7 +291,27 @@
                 ["formatOL", "formatUL"],
                 ["paragraphFormat", "fontSize"],
                 ["insertLink", "insertImage"]
-            ]
+            ],
+            imageUploadURL: '<?= route_to('UploadImageController::uploadImage') ?>',
+            // imageDeleteURL: '<?= route_to('UploadImageController::deleteImage') ?>',
+            imageManagerUploadMethod: 'POST',
+            // imageManagerDeleteMethod: 'POST',
+
+            // events: {
+            //     'image.removed': function($img) {
+            //         var xhttp = new XMLHttpRequest();
+            //         xhttp.onreadystatechange = function() {
+
+            //             if (this.readyState == 4 && this.status == 200) {
+            //                 console.log('image was deleted');
+            //             }
+            //         };
+            //         xhttp.open("POST", "<?= route_to('UploadImageController::deleteImage') ?>", true);
+            //         xhttp.send(JSON.stringify({
+            //             src: $img.attr('src')
+            //         }));
+            //     }
+            // }
         });
     </script>
 </body>
