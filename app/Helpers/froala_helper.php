@@ -1,7 +1,5 @@
 <?php
 
-use CodeIgniter\Files\File;
-
 if (!function_exists('upload_image')) {
     function upload_image($file)
     {

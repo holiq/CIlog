@@ -34,10 +34,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
+                        <li class="nav-item <?= active_nav(['Home::index', 'Home::detail']) ?>">
                             <a class="nav-link" aria-current="page" href="<?= route_to('Home::index') ?>">Home</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown <?= active_nav('Home::listByCategory') ?>">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="kategoriDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Kategori
                             </a>

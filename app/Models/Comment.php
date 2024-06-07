@@ -57,6 +57,10 @@ class Comment extends Model
 
     public function onlyMyComment($myPost)
     {
+        if ($myPost == null) {
+            $myPost = [0];
+        }
+
         return $this->whereIn('post_id', $myPost);
     }
 

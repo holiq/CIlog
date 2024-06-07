@@ -172,7 +172,7 @@
                     <div class="menu-inner-shadow" style="display: block;"></div>
 
                     <ul class="menu-inner py-1 ps ps--active-y">
-                        <li class="menu-item">
+                        <li class="menu-item <?= active_nav('Admin\Dashboard::index') ?>">
                             <a href="<?= route_to('Admin\Dashboard::index') ?>" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-home"></i>
                                 <div data-i18n="Basic">Dashboard</div>
@@ -181,25 +181,25 @@
 
                         <?php if (session()->get('role') == 'Admin') : ?>
                             <li class="menu-header small text-uppercase"><span class="menu-header-text">Admin Menu</span></li>
-                            <li class="menu-item">
+                            <li class="menu-item <?= active_nav(['Admin\Category::index', 'Admin\Category::create', 'Admin\Category::edit']) ?>">
                                 <a href="<?= route_to('Admin\Category::index') ?>" class="menu-link">
                                     <i class="menu-icon tf-icons bx bx-box"></i>
                                     <div data-i18n="Basic">Kategori</div>
                                 </a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item <?= active_nav(['Admin\Post::index', 'Admin\Post::create', 'Admin\Post::edit']) ?>">
                                 <a href="<?= route_to('Admin\Post::index') ?>" class="menu-link">
                                     <i class="menu-icon tf-icons bx bx-note"></i>
                                     <div data-i18n="Basic">Post</div>
                                 </a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item <?= active_nav(['Admin\Comment::index', 'Admin\Comment::create', 'Admin\Comment::edit']) ?>">
                                 <a href="<?= route_to('Admin\Comment::index') ?>" class="menu-link">
                                     <i class="menu-icon tf-icons bx bx-chat"></i>
                                     <div data-i18n="Basic">Kometar</div>
                                 </a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item <?= active_nav(['Admin\User::index', 'Admin\User::create', 'Admin\User::edit']) ?>">
                                 <a href="<?= route_to('Admin\User::index') ?>" class="menu-link">
                                     <i class="menu-icon tf-icons bx bx-user"></i>
                                     <div data-i18n="Basic">User</div>
@@ -208,19 +208,19 @@
                         <?php endif; ?>
 
                         <li class="menu-header small text-uppercase"><span class="menu-header-text">Editor Menu</span></li>
-                        <li class="menu-item">
+                        <li class="menu-item <?= active_nav(['Editor\Post::index', 'Editor\Post::create', 'Editor\Post::edit']) ?>">
                             <a href="<?= route_to('Editor\Post::index') ?>" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-note"></i>
                                 <div data-i18n="Basic">Post</div>
                             </a>
                         </li>
-                        <li class="menu-item">
+                        <li class="menu-item <?= active_nav(['Editor\Comment::index', 'Editor\Comment::create', 'Editor\Comment::edit']) ?>">
                             <a href="<?= route_to('Editor\Comment::index') ?>" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-chat"></i>
                                 <div data-i18n="Basic">Komentar</div>
                             </a>
                         </li>
-                        <li class="menu-item">
+                        <li class="menu-item <?= active_nav('Editor\Profile::edit') ?>">
                             <a href="<?= route_to('Editor\Profile::edit') ?>" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-cog"></i>
                                 <div data-i18n="Basic">Profile</div>
