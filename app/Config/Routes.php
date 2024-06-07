@@ -57,5 +57,8 @@ $routes->get('/editor/comment/edit/(:num)', 'Editor\Comment::edit/$1');
 $routes->post('/editor/comment/update/(:num)', 'Editor\Comment::update/$1');
 $routes->get('/editor/comment/delete/(:num)', 'Editor\Comment::destroy/$1');
 
+$routes->get('/editor/profile/edit', 'Editor\Profile::edit');
+$routes->post('/editor/profile/edit', 'Editor\Profile::update');
+
 $routes->get('/(:segment)', 'Home::detail/$1');
 $routes->post('/(:segment)/comment', 'Home::comment/$1');

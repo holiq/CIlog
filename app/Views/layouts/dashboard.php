@@ -220,6 +220,12 @@
                                 <div data-i18n="Basic">Komentar</div>
                             </a>
                         </li>
+                        <li class="menu-item">
+                            <a href="<?= route_to('Editor\Profile::edit') ?>" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-cog"></i>
+                                <div data-i18n="Basic">Profile</div>
+                            </a>
+                        </li>
                     </ul>
                 </aside>
             <?php endif; ?>
