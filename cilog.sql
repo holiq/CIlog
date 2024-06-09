@@ -1,15 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2024 at 09:24 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Jun 09, 2024 at 03:23 PM
+-- Server version: 8.4.0
+-- PHP Version: 8.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+07:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,9 +28,9 @@ SET time_zone = "+07:00";
 --
 
 CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL
+  `id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -38,7 +38,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`) VALUES
-(1, 'PHP', 'php');
+(1, 'PHP', 'php'),
+(2, 'MySQL', 'mysql'),
+(3, 'Query Builder', 'query-builder'),
+(4, 'Helper', 'helper');
 
 -- --------------------------------------------------------
 
@@ -47,15 +50,15 @@ INSERT INTO `categories` (`id`, `name`, `slug`) VALUES
 --
 
 CREATE TABLE `comments` (
-  `id` int(11) NOT NULL,
-  `content` text NOT NULL,
-  `post_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `comment_id` int(11) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `type` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id` int NOT NULL,
+  `content` text COLLATE utf8mb4_general_ci NOT NULL,
+  `post_id` int NOT NULL,
+  `user_id` int DEFAULT NULL,
+  `comment_id` int DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -65,14 +68,14 @@ CREATE TABLE `comments` (
 --
 
 CREATE TABLE `posts` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `content` text NOT NULL,
-  `view` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `id` int NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `user_id` int NOT NULL,
+  `category_id` int NOT NULL,
+  `content` text COLLATE utf8mb4_general_ci NOT NULL,
+  `view` int NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -89,12 +92,12 @@ INSERT INTO `posts` (`id`, `title`, `slug`, `user_id`, `category_id`, `content`,
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `role` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -103,7 +106,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `username`, `role`, `password`) VALUES
 (1, 'Holiq Ibrahim', 'holiq@gmail.com', 'holiq', 'Admin', '$2y$10$oSBOmk.2cuj1ImDucluFvuT4TXHKUxpSQ9qTsz9jk2sgtlRiqnAcm'),
-(2, 'Mirna', 'mirna@gmail.com', 'mirna', 'Editor', '$2y$10$ZpELFBY.L5sKszNvX1vTmOcMCe6yHlXk3hQvY5HIY1z9V22gSOz3y');
+(2, 'Mirna', 'mirna@gmail.com', 'mirna', 'Editor', '$2y$10$ZpELFBY.L5sKszNvX1vTmOcMCe6yHlXk3hQvY5HIY1z9V22gSOz3y'),
+(3, 'Marnisah', 'marnisah@gmail.com', 'nisa', 'Editor', '$2y$10$/kWJTrN7NZ3W1bCgphARweRduEgw.7Avo6dv6brMqpinSlOkHsJtC'),
+(4, 'Qonita', 'qonita@gmail.com', 'qonita', 'Editor', '$2y$10$NVUNAuwMz5xGPvE2hv0uMOGGHmFS5F9yJWfOF5OlwS39tuLy99cw6'),
+(5, 'Firman', 'firman@gmail.com', 'firman', 'Editor', '123456');
 
 --
 -- Indexes for dumped tables
@@ -141,25 +147,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

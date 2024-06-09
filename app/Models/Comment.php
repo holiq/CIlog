@@ -46,7 +46,7 @@ class Comment extends Model
 
     public function withPost()
     {
-        return $this->join('posts', 'posts.id = comments.post_id')->select('comments.*, posts.title');
+        return $this->join('posts', 'posts.id = comments.post_id')->select('comments.*, posts.title, posts.slug');
     }
 
     public function withEditor()

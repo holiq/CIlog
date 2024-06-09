@@ -25,6 +25,11 @@
 </head>
 
 <body>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
     <header>
         <nav class="navbar navbar-expand-md navbar-white bg-white mb-5">
             <div class="container-fluid">
