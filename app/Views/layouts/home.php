@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?? '' ?></title>
 
+    <meta name="description" content="<?= $desc ?? 'CIlog, website tutorial CodeIgniter4 berdasarkan tugas pemrograman 4' ?>">
+    <meta property="og:type" content="website">
+    <meta name="author" content="Holiq Ibrahim, Firman Gustiar, Mirnawati, Marnisah, Qonita Zahratul Jannah">
+    <meta property="og:title" content="<?= $title ?? '' ?>" />
+    <meta property="og:description" content="<?= $desc ?? 'CIlog, website tutorial CodeIgniter4 berdasarkan tugas pemrograman 4' ?>" />
+    <meta property="og:url" content="<?= current_url() ?>" />
+    <meta name="twitter:title" content="<?= $title ?? '' ?>" />
+    <meta name="twitter:description" content="<?= $desc ?? 'CIlog, website tutorial CodeIgniter4 berdasarkan tugas pemrograman 4' ?>">
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
@@ -65,6 +74,10 @@
     <main id="main">
         <?= $this->renderSection('content') ?>
     </main>
+
+    <footer class="d-flex flex-row justify-content-center align-items-center shadow" style="background-color: white;">
+        <div class="py-2">&copy;2024, CIlog</div>
+    </footer>
 
     <script src="<?= base_url('js/core.js') ?>" crossorigin="anonymous"></script>
     <script src="<?= base_url('js/main.js') ?>" crossorigin="anonymous"></script>
