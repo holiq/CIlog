@@ -30,14 +30,14 @@
                     <select name="category_id" id="category_id" class="form-control">
                         <option value="">--Pilih--</option>
                         <?php foreach ($categories as $data) : ?>
-                            <option value="<?= $data->id ?>"<?= $data->id == $post->category_id ? 'selected' : '' ?>><?= $data->name ?></option>
+                            <option value="<?= $data->id ?>" <?= $data->id == $post->category_id ? 'selected' : '' ?>><?= $data->name ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
 
                 <div class="mb-4">
                     <label for"editor">Konten</label>
-                    <textarea name="content" class="form-control" id="editor"><?= $post->content ?></textarea>
+                    <textarea name="content" class="form-control" id="editor"><?= htmlspecialchars($post->content) ?></textarea>
                 </div>
 
 

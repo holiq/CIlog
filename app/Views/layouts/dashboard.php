@@ -153,6 +153,10 @@
         .content-wrapper {
             padding-bottom: 0px !important;
         }
+
+        .fr-wrapper div a {
+            display: none !important;
+        }
     </style>
 
     <main class="layout-wrapper layout-content-navbar">
