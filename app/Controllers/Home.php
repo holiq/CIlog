@@ -56,6 +56,8 @@ class Home extends BaseController
             'title' => 'Cilog',
             'pager' => $this->post->pager,
             'categories' => $this->category->findAll(),
+            'top_post' => $this->post->withCategory()->withUser()->orderBy('view', 'desc')->findAll(5),
+            'last_comment' => $this->comment->withPost()->withEditor()->orderBy('id', 'desc')->findAll(5)
         ];
 
         return view('home', $data);
@@ -78,7 +80,7 @@ class Home extends BaseController
             'post' => $post,
             'comments' => $this->comment->getComments($post->id),
             'categories' => $this->category->findAll(),
-            'desc' => substr(strip_tags($post->content), 0, 150).'...',
+            'desc' => substr(strip_tags($post->content), 0, 150) . '...',
         ];
 
         return view('post', $data);

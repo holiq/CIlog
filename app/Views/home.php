@@ -6,7 +6,7 @@
             <?php foreach ($data as $post) : ?>
                 <div class="card mb-2">
                     <div class="card-body">
-                        <div class="mb-3"><a href="3" class="badge bg-label-primary"># <?= $post->category_name ?></a> | <?= $post->editor_name ?></div>
+                        <div class="mb-3"><a href="<?= route_to('Home::listByCategory', $post->category_slug) ?>" class="badge bg-label-primary"># <?= $post->category_name ?></a> | <?= $post->editor_name ?></div>
                         <h5 class="card-title"><a href="<?= route_to('Home::detail', $post->slug) ?>"><?= $post->title ?></a></h5>
                         <small class="text-muted"><?= $post->created_at ?></small>
                         <p class="card-text">

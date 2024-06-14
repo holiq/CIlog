@@ -93,6 +93,16 @@
             ]
         });
     </script>
+
+    <Style>
+        p [data-f-id="pbf"] {
+            display: none !important;
+        }
+
+        .fr-wrapper div a {
+            display: none !important;
+        }
+    </Style>
 </body>
 
 </html>

@@ -66,7 +66,7 @@ class Post extends Model
 
     public function withCategoryAndUserAndTotalComments()
     {
-        return $this->select('posts.*, categories.name AS category_name, users.name AS editor_name, COUNT(comments.id) as total_comments')
+        return $this->select('posts.*, categories.name AS category_name, categories.slug AS category_slug, users.name AS editor_name, COUNT(comments.id) as total_comments')
             ->join('categories', 'categories.id = posts.category_id')
             ->join('users', 'users.id = posts.user_id')
             ->join('comments', 'posts.id = comments.post_id', 'left')
